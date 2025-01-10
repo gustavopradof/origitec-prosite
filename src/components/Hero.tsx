@@ -1,4 +1,5 @@
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -6,7 +7,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000')",
+          backgroundImage: "url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=2000')",
         }}
       >
         <div className="absolute inset-0 hero-gradient" />
@@ -20,9 +21,11 @@ const Hero = () => {
           <p className="text-xl text-origitec-white/90 mb-8">
             Expertise técnica e inovação para otimizar seus processos industriais
           </p>
-          <Button className="bg-origitec-white text-origitec-black hover:bg-origitec-gray text-lg px-8 py-6">
-            Solicite um Orçamento
-          </Button>
+          <Link to="/contact">
+            <Button className="bg-origitec-white text-origitec-black hover:bg-origitec-gray text-lg px-8 py-6">
+              Solicite um Orçamento
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

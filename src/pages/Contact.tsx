@@ -5,9 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
   const [step, setStep] = useState(1);
+  const { toast } = useToast();
+  const WHATSAPP_NUMBER = "5511123456789"; // Replace with actual WhatsApp number
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -33,6 +36,15 @@ const Contact = () => {
     },
   ];
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Orçamento solicitado!",
+      description: "Em breve entraremos em contato.",
+    });
+    setStep(1);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -43,38 +55,42 @@ const Contact = () => {
           <section className="bg-white p-8 rounded-lg shadow-lg">
             <h2 className="text-3xl font-bold mb-8">Entre em Contato</h2>
             
-            {step === 1 && (
-              <div className="space-y-4">
-                <Input placeholder="Nome" />
-                <Input type="email" placeholder="E-mail" />
-                <Input type="tel" placeholder="Telefone" />
-                <Button onClick={() => setStep(2)} className="w-full">
-                  Próximo
-                </Button>
-              </div>
-            )}
-
-            {step === 2 && (
-              <div className="space-y-4">
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Tipo de Serviço" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="automation">Automação Industrial</SelectItem>
-                    <SelectItem value="maintenance">Manutenção Elétrica</SelectItem>
-                    <SelectItem value="efficiency">Eficiência Energética</SelectItem>
-                  </SelectContent>
-                </Select>
-                <Textarea placeholder="Descreva sua necessidade" className="min-h-[120px]" />
-                <div className="flex gap-4">
-                  <Button variant="outline" onClick={() => setStep(1)}>
-                    Voltar
+            <form onSubmit={handleSubmit}>
+              {step === 1 && (
+                <div className="space-y-4">
+                  <Input placeholder="Nome" required />
+                  <Input type="email" placeholder="E-mail" required />
+                  <Input type="tel" placeholder="Telefone" required />
+                  <Button type="button" onClick={() => setStep(2)} className="w-full">
+                    Próximo
                   </Button>
-                  <Button className="flex-1">Enviar</Button>
                 </div>
-              </div>
-            )}
+              )}
+
+              {step === 2 && (
+                <div className="space-y-4">
+                  <Select required>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Tipo de Serviço" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="automation">Automação Industrial</SelectItem>
+                      <SelectItem value="maintenance">Manutenção Elétrica</SelectItem>
+                      <SelectItem value="efficiency">Eficiência Energética</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Textarea placeholder="Descreva sua necessidade" className="min-h-[120px]" required />
+                  <div className="flex gap-4">
+                    <Button type="button" variant="outline" onClick={() => setStep(1)}>
+                      Voltar
+                    </Button>
+                    <Button type="submit" className="flex-1">
+                      Enviar
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </form>
           </section>
 
           {/* Informações de Contato */}
@@ -112,8 +128,10 @@ const Contact = () => {
 
         {/* Botão flutuante do WhatsApp */}
         <a
-          href="https://wa.me/5511123456789"
-          className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
+          href={`https://wa.me/${WHATSAPP_NUMBER}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors z-50"
           aria-label="Contato via WhatsApp"
         >
           <MessageCircle className="w-6 h-6" />

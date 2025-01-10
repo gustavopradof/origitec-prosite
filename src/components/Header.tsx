@@ -22,9 +22,11 @@ const Header = () => {
             <Link to="/contact" className="hover:text-origitec-gray transition-colors">Contato</Link>
           </nav>
 
-          <Button className="hidden md:block bg-origitec-white text-origitec-black hover:bg-origitec-gray">
-            Solicitar Orçamento
-          </Button>
+          <Link to="/contact">
+            <Button className="hidden md:block bg-origitec-white text-origitec-black hover:bg-origitec-gray">
+              Solicitar Orçamento
+            </Button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -67,9 +69,11 @@ const Header = () => {
               >
                 Contato
               </Link>
-              <Button className="w-full mt-4 bg-origitec-white text-origitec-black hover:bg-origitec-gray">
-                Solicitar Orçamento
-              </Button>
+              <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <Button className="w-full mt-4 bg-origitec-white text-origitec-black hover:bg-origitec-gray">
+                  Solicitar Orçamento
+                </Button>
+              </Link>
             </div>
           </div>
         )}
