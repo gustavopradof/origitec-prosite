@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,15 +11,15 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold">ORIGITEC</h1>
+            <Link to="/" className="text-2xl font-bold">ORIGITEC</Link>
           </div>
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#home" className="hover:text-origitec-gray transition-colors">Home</a>
-            <a href="#services" className="hover:text-origitec-gray transition-colors">Serviços</a>
-            <a href="#about" className="hover:text-origitec-gray transition-colors">Sobre</a>
-            <a href="#contact" className="hover:text-origitec-gray transition-colors">Contato</a>
+            <Link to="/" className="hover:text-origitec-gray transition-colors">Home</Link>
+            <Link to="/services" className="hover:text-origitec-gray transition-colors">Serviços</Link>
+            <Link to="/about" className="hover:text-origitec-gray transition-colors">Sobre</Link>
+            <Link to="/contact" className="hover:text-origitec-gray transition-colors">Contato</Link>
           </nav>
 
           <Button className="hidden md:block bg-origitec-white text-origitec-black hover:bg-origitec-gray">
@@ -38,30 +39,34 @@ const Header = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <a
-                href="#home"
+              <Link
+                to="/"
                 className="block px-3 py-2 hover:bg-origitec-gray/10 rounded-md"
+                onClick={() => setIsOpen(false)}
               >
                 Home
-              </a>
-              <a
-                href="#services"
+              </Link>
+              <Link
+                to="/services"
                 className="block px-3 py-2 hover:bg-origitec-gray/10 rounded-md"
+                onClick={() => setIsOpen(false)}
               >
                 Serviços
-              </a>
-              <a
-                href="#about"
+              </Link>
+              <Link
+                to="/about"
                 className="block px-3 py-2 hover:bg-origitec-gray/10 rounded-md"
+                onClick={() => setIsOpen(false)}
               >
                 Sobre
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                to="/contact"
                 className="block px-3 py-2 hover:bg-origitec-gray/10 rounded-md"
+                onClick={() => setIsOpen(false)}
               >
                 Contato
-              </a>
+              </Link>
               <Button className="w-full mt-4 bg-origitec-white text-origitec-black hover:bg-origitec-gray">
                 Solicitar Orçamento
               </Button>
