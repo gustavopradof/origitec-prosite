@@ -1,8 +1,8 @@
-import { Circuit, Factory, Wrench, Bolt, Cable, Shield } from "lucide-react";
+import { CircuitBoard, Factory, Wrench, Bolt, Cable, Shield } from "lucide-react";
 
 const services = [
   {
-    icon: <Circuit size={40} />,
+    icon: <CircuitBoard size={40} />,
     title: "Automação Industrial",
     description: "Sistemas inteligentes para otimizar sua produção",
   },
