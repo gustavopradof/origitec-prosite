@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, WhatsApp } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   const [step, setStep] = useState(1);
@@ -116,7 +116,7 @@ const Contact = () => {
           className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors"
           aria-label="Contato via WhatsApp"
         >
-          <WhatsApp className="w-6 h-6" />
+          <MessageCircle className="w-6 h-6" />
         </a>
       </main>
     </div>
